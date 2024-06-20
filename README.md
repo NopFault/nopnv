@@ -8,7 +8,7 @@ Usage:
 
 ```
 [dependencies]
-nopnv = { git = "https://github.com/NopFault/nopnv", branch = "master"
+nopnv = { git = "https://github.com/NopFault/nopnv", branch = "master" }
 ```
 
 `main.rs`
