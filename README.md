@@ -49,3 +49,8 @@ P3=432qwe
 PS=$P1,$P2,$P3
 TEST_ARR=asd,1,444
 ```
+
+Running app:
+
+<img width="745" alt="image" src="https://github.com/NopFault/nopnv/assets/90475186/a4f1cc89-2e70-4640-9cf2-5dc278e17563">
+
