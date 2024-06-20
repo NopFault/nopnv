@@ -4,20 +4,20 @@ use std::io::{self, BufRead};
 use std::path::Path;
 use regex::Regex;
 
-struct Env {
-    vars: HashMap<String, String>,
-    arrays: HashMap<String, Vec<String>>
+pub struct Env {
+    pub vars: HashMap<String, String>,
+    pub arrays: HashMap<String, Vec<String>>
 }
 
 impl Env {
-    fn new() -> Self {
+    pub fn new() -> Self {
         Env {
             vars: HashMap::new(),
             arrays: HashMap::new()
         }
     }
 
-    fn from_file(filename: &str) -> io::Result<Self> {
+    pub fn from_file(filename: &str) -> io::Result<Self> {
         let mut env = Env::new();
         if let Ok(lines) = Self::read_lines(filename) {
             for line in lines {
@@ -42,15 +42,15 @@ impl Env {
         Ok(env)
     }
 
-    fn get(&self, key: &str) -> Option<&String> {
+    pub fn get(&self, key: &str) -> Option<&String> {
         self.vars.get(key)
     }
 
-    fn get_array(&self, key: &str) -> Option<&Vec<String>> {
+    pub fn get_array(&self, key: &str) -> Option<&Vec<String>> {
         self.arrays.get(key)
     }
 
-    fn expand_value(&self, value: &str) -> String {
+    pub fn expand_value(&self, value: &str) -> String {
         let re = Regex::new(r"\$\{?([A-Z_][A-Z0-9_]*)\}?").unwrap();
         let mut expanded = String::from(value);
         for cap in re.captures_iter(value) {
@@ -63,7 +63,7 @@ impl Env {
         expanded
     }
 
-    fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
+    pub fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
     where 
         P: AsRef<Path>,
     {
